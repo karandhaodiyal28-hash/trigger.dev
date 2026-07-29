@@ -351,6 +351,7 @@ export interface TimeFilterProps {
   hideLabel?: boolean;
   /** Keyboard shortcut to open the dropdown */
   shortcut?: ShortcutDefinition;
+  disableTooltipHoverableContent?: boolean;
   applyShortcut?: ShortcutDefinition | undefined;
   /** Callback when the user applies a time filter selection, receives the applied values */
   onValueChange?: (values: TimeFilterApplyValues) => void;
@@ -368,6 +369,7 @@ export function TimeFilter({
   labelName = "Created",
   hideLabel = false,
   shortcut,
+  disableTooltipHoverableContent,
   applyShortcut,
   onValueChange,
   maxPeriodDays,
@@ -424,7 +426,12 @@ export function TimeFilter({
                 />
               </Ariakit.TooltipAnchor>
               {shortcut && (
-                <Ariakit.Tooltip className="z-40 cursor-default rounded border border-grid-bright bg-background-bright px-2 py-1.5 text-xs">
+                <Ariakit.Tooltip
+                  className={cn(
+                    "z-40 cursor-default rounded border border-grid-bright bg-background-bright px-2 py-1.5 text-xs",
+                    disableTooltipHoverableContent && "pointer-events-none"
+                  )}
+                >
                   <div className="flex items-center gap-2">
                     <span>Filter by time period</span>
                     <ShortcutKey className="size-4 flex-none" shortcut={shortcut} variant="small" />

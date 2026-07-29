@@ -65,6 +65,7 @@ function SimpleTooltip({
   asChild = false,
   tabbable = false,
   sideOffset,
+  align,
   open,
   onOpenChange,
   delayDuration,
@@ -83,6 +84,7 @@ function SimpleTooltip({
    * it from the tab order (decorative tooltips add no tab stops). */
   tabbable?: boolean;
   sideOffset?: number;
+  align?: React.ComponentProps<typeof TooltipContent>["align"];
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   delayDuration?: number;
@@ -101,6 +103,7 @@ function SimpleTooltip({
         </TooltipTrigger>
         <TooltipContent
           side={side}
+          align={align}
           hidden={hidden}
           sideOffset={sideOffset}
           className={cn("text-xs", className)}

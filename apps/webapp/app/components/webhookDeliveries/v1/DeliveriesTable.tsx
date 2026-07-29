@@ -135,7 +135,7 @@ export function DeliveriesTable({
                 <TableCell to={deliveryPath}>
                   <span className="flex items-center gap-1.5">
                     <span className="font-mono text-xs">{delivery.friendlyId}</span>
-                    {delivery.isTest ? <Badge variant="extra-small">Test</Badge> : null}
+                    {delivery.isTest ? <Badge variant="extra-small-muted">Test</Badge> : null}
                   </span>
                 </TableCell>
                 <TableCell to={deliveryPath}>

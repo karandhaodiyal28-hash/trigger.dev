@@ -139,7 +139,7 @@ export function MiddleTruncate({ text, className }: MiddleTruncateProps) {
   }, [calculateTruncation]);
 
   const content = (
-    <span ref={containerRef} className={cn("block", isTruncated && "min-w-[360px]", className)}>
+    <span ref={containerRef} className={cn("block", className)}>
       {/* Hidden span for measuring text width */}
       <span ref={measureRef} className="invisible absolute whitespace-nowrap" aria-hidden="true" />
       {displayText}
@@ -152,7 +152,9 @@ export function MiddleTruncate({ text, className }: MiddleTruncateProps) {
         button={content}
         content={<span className="max-w-xs break-all font-mono text-xs">{text}</span>}
         side="top"
+        align="center"
         asChild
+        disableHoverableContent
       />
     );
   }

@@ -197,6 +197,7 @@ export type ButtonContentPropsType = {
   variant: ButtonVariant;
   shortcutPosition?: "before-trailing-icon" | "after-trailing-icon";
   tooltip?: ReactNode;
+  disableTooltipHoverableContent?: boolean;
   iconSpacing?: string;
   hideShortcutKey?: boolean;
   isLoading?: boolean;
@@ -214,6 +215,7 @@ export function ButtonContent(props: ButtonContentPropsType) {
     textAlignLeft,
     className,
     tooltip,
+    disableTooltipHoverableContent,
     iconSpacing,
     hideShortcutKey,
     isLoading,
@@ -313,7 +315,7 @@ export function ButtonContent(props: ButtonContentPropsType) {
 
   if (tooltip) {
     return (
-      <TooltipProvider>
+      <TooltipProvider disableHoverableContent={disableTooltipHoverableContent}>
         <Tooltip>
           <TooltipTrigger asChild>{buttonContent}</TooltipTrigger>
           <TooltipContent className="flex items-center gap-1.5 py-1.5 pl-2.5 pr-2 text-xs text-text-bright">

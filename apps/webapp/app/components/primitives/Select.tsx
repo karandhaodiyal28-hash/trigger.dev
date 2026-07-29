@@ -275,6 +275,7 @@ export interface SelectTriggerProps<TValue = any> extends AriaSelectProps {
   variant?: Variant;
   shortcut?: ShortcutDefinition;
   tooltipTitle?: string;
+  disableTooltipHoverableContent?: boolean;
   dropdownIcon?: boolean | React.ReactNode;
 }
 
@@ -284,6 +285,7 @@ export function SelectTrigger({
   text,
   shortcut,
   tooltipTitle,
+  disableTooltipHoverableContent,
   disabled,
   placeholder,
   dropdownIcon = false,
@@ -366,7 +368,10 @@ export function SelectTrigger({
       {showTooltip && (
         <Ariakit.Tooltip
           disabled={!tooltipTitle && !shortcut}
-          className="z-40 cursor-default rounded border border-grid-bright bg-background-bright px-2 py-1.5 text-xs"
+          className={cn(
+            "z-40 cursor-default rounded border border-grid-bright bg-background-bright px-2 py-1.5 text-xs",
+            disableTooltipHoverableContent && "pointer-events-none"
+          )}
         >
           <div className="flex items-center gap-2">
             <span>{tooltipTitle ?? "Open menu"}</span>

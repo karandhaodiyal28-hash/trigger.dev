@@ -6,6 +6,8 @@ const variants = {
     "grid place-items-center rounded-full px-2 h-5 tracking-wider text-xxs bg-background-hover text-text-bright uppercase whitespace-nowrap",
   "extra-small":
     "grid place-items-center border border-border-bright rounded-sm px-1 h-4 text-xxs bg-background-bright text-blue-500 whitespace-nowrap",
+  "extra-small-muted":
+    "grid place-items-center rounded-sm px-1 h-4 text-xxs font-semibold uppercase tracking-wide bg-charcoal-700 text-text-dimmed whitespace-nowrap",
   small:
     "grid place-items-center border border-border-bright rounded-sm px-1 h-5 text-xs bg-background-bright text-blue-500 whitespace-nowrap",
   "outline-rounded":

@@ -66,7 +66,11 @@ export function WebhookDeliveryFilters(props: WebhookDeliveryFiltersProps) {
       <PermanentStatusFilter />
       <PermanentWebhookFilter possibleWebhooks={props.possibleWebhooks} />
       <PermanentTestFilter />
-      <TimeFilter defaultPeriod={props.defaultPeriod} shortcut={{ key: "d" }} />
+      <TimeFilter
+        defaultPeriod={props.defaultPeriod}
+        shortcut={{ key: "d" }}
+        disableTooltipHoverableContent
+      />
       <AppliedFilters />
       <FilterMenu />
       {hasFilters && (
@@ -75,6 +79,7 @@ export function WebhookDeliveryFilters(props: WebhookDeliveryFiltersProps) {
             variant="minimal/small"
             LeadingIcon={XMarkIcon}
             tooltip="Clear all filters"
+            disableTooltipHoverableContent
             className="group-hover/button:bg-transparent"
             leadingIconClassName="group-hover/button:text-text-bright"
           />
@@ -106,6 +111,7 @@ function FilterMenu() {
       variant={"secondary/small"}
       shortcut={moreFiltersShortcut}
       tooltipTitle={"More filters"}
+      disableTooltipHoverableContent
       className="pl-1 pr-2"
     >
       More filters
@@ -281,7 +287,7 @@ function PermanentStatusFilter() {
                   </div>
                 )}
               </Ariakit.TooltipAnchor>
-              <Ariakit.Tooltip className="z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
+              <Ariakit.Tooltip className="pointer-events-none z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
                 <div className="flex items-center gap-2">
                   <span>Filter by status</span>
                   <ShortcutKey
@@ -414,7 +420,7 @@ function PermanentWebhookFilter({ possibleWebhooks }: { possibleWebhooks: Possib
                   </div>
                 )}
               </Ariakit.TooltipAnchor>
-              <Ariakit.Tooltip className="z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
+              <Ariakit.Tooltip className="pointer-events-none z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
                 <div className="flex items-center gap-2">
                   <span>Filter by webhook</span>
                   <ShortcutKey
@@ -524,7 +530,7 @@ function PermanentTestFilter() {
               </div>
             )}
           </Ariakit.TooltipAnchor>
-          <Ariakit.Tooltip className="z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
+          <Ariakit.Tooltip className="pointer-events-none z-40 cursor-default rounded border border-charcoal-700 bg-background-bright px-2 py-1.5 text-xs">
             <div className="flex items-center gap-2">
               <span>Filter test sends</span>
               <ShortcutKey className="size-4 flex-none" shortcut={testShortcut} variant="small" />

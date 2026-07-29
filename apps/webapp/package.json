@@ -20,6 +20,7 @@
     "db:seed": "tsx seed.ts",
     "db:seed:ai-spans": "tsx seed-ai-spans.mts",
     "db:seed:webhooks": "tsx seed-webhook-deliveries.ts",
+    "webhooks:state": "tsx seed-webhook-ui-states.ts",
     "upload:sourcemaps": "bash ./upload-sourcemaps.sh",
     "test": "vitest --no-file-parallelism",
     "eval:dev": "evalite watch"
