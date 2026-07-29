@@ -1165,7 +1165,7 @@ export class RunEngine {
             }
 
             this.eventBus.emit("executionSnapshotCreated", {
-              time: taskRun.createdAt,
+              time: new Date(),
               run: {
                 id: taskRun.id,
               },
