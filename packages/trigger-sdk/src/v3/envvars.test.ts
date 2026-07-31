@@ -54,14 +54,13 @@ describe("envvars.update outside a task context (GH #4264)", () => {
     expect(updateRequest!.url).toContain("/projects/proj_ref/envvars/prod/MY_SECRET");
   });
 
-  it("throws a clear error when the name is missing", async () => {
-    const key = "tr_prod_0123456789abcdefghijklmn";
-
-    await apiClientManager.runWithConfig({ baseURL: baseUrl, accessToken: key }, async () => {
-      await expect(
-        // @ts-expect-error deliberately omitting the name argument
-        envvars.update("proj_ref", "prod", { value: "abc" })
-      ).rejects.toThrow("name is required");
-    });
+  it("throws a clear error when the name is missing", () => {
+    // Outside a task context, omitting the name (with params present) must fail
+    // the name guard. update() resolves its arguments synchronously, so the
+    // error is thrown at call time rather than via a rejected promise.
+    expect(() =>
+      // @ts-expect-error deliberately passing undefined for the name argument
+      envvars.update("proj_ref", "prod", undefined, { value: "abc" })
+    ).toThrow("name is required");
   });
 });

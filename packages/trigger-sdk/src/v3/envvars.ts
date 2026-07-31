@@ -305,17 +305,17 @@ export function update(
 
   if (taskContext.ctx) {
     if (typeof slugOrParams === "string") {
-      $projectRef = slugOrParams;
-      $slug = slugOrParams ?? taskContext.ctx.environment.slug;
-      $name =
-        typeof nameOrRequestOptions === "string"
-          ? nameOrRequestOptions
-          : taskContext.ctx.environment.slug;
+      if (typeof nameOrRequestOptions !== "string") {
+        throw new Error("name is required");
+      }
 
       if (!params) {
         throw new Error("params is required");
       }
 
+      $projectRef = projectRefOrName;
+      $slug = slugOrParams;
+      $name = nameOrRequestOptions;
       $params = params;
     } else {
       $params = slugOrParams;
